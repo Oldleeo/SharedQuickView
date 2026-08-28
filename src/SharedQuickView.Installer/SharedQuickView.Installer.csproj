@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>共享速览安装程序</AssemblyName>
+    <RootNamespace>SharedQuickViewInstaller</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>..\SharedQuickView\Assets\共享速览.ico</ApplicationIcon>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <Version>2.0.2</Version>
+    <Product>共享速览安装程序</Product>
+    <Company>@老李Oldlee</Company>
+    <Copyright>Copyright © @老李Oldlee 2026</Copyright>
+    <MainAppPayload Condition="'$(MainAppPayload)' == ''">$(MSBuildThisFileDirectory)..\..\artifacts\app\共享速览.exe</MainAppPayload>
+  </PropertyGroup>
+  <ItemGroup>
+    <Resource Include="..\SharedQuickView\Assets\共享速览.ico" Link="Assets\共享速览.ico" />
+    <Resource Include="..\SharedQuickView\Assets\共享速览-ui-icon.png" Link="Assets\共享速览-ui-icon.png" />
+    <Resource Include="..\SharedQuickView\Assets\老李Oldlee-头像-清晰版.png" Link="Assets\老李Oldlee-头像-清晰版.png" />
+    <EmbeddedResource Include="$(MainAppPayload)" LogicalName="Payload.共享速览.exe" />
+    <EmbeddedResource Include="用户协议.txt" LogicalName="Docs.用户协议.txt" />
+    <EmbeddedResource Include="隐私政策.txt" LogicalName="Docs.隐私政策.txt" />
+  </ItemGroup>
+  <Target Name="ValidateMainAppPayload" BeforeTargets="PrepareResources" Condition="!Exists('$(MainAppPayload)')">
+    <Error Text="找不到主程序载荷：$(MainAppPayload)。请先运行仓库根目录的 build.ps1。" />
+  </Target>
+</Project>

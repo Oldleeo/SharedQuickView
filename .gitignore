@@ -1,0 +1,32 @@
+# .NET build output
+**/bin/
+**/obj/
+artifacts/
+
+# IDE and local developer state
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local packages, logs and temporary files
+.dotnet/
+.nuget/
+packages/
+*.log
+*.tmp
+*.bak
+
+# Local app data and QA output
+settings.json
+QA截图*/
+安装测试*/
+卸载测试*/
+
+# OS metadata
+Thumbs.db
+Desktop.ini
+.DS_Store

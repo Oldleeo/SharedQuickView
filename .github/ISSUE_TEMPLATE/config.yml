@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 安全问题
+    url: https://github.com/Oldleeo/SharedQuickView/security/policy
+    about: 涉及安全或隐私的问题请先阅读安全政策，不要公开敏感细节。

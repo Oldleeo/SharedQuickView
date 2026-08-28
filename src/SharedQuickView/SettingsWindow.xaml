@@ -1,0 +1,103 @@
+<Window x:Class="IpPathQuickOpen.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="设置" Icon="Assets/共享速览.ico" Width="520" Height="680" WindowStyle="None"
+        AllowsTransparency="True" Background="Transparent" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <Grid Margin="18">
+        <Border Background="#FAFBFD" CornerRadius="24" BorderBrush="#E6E9EF" BorderThickness="1">
+            <Border.Effect>
+                <DropShadowEffect Color="#24324A" BlurRadius="26" ShadowDepth="7" Opacity="0.17"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="68"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="76"/>
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0" Background="White" CornerRadius="24,24,0,0"
+                        MouseLeftButtonDown="Header_MouseLeftButtonDown">
+                    <Grid Margin="22,0">
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock Text="偏好设置" FontSize="17" FontWeight="SemiBold" Foreground="#182033"/>
+                            <TextBlock Text="让工具更贴合你的工作方式" FontSize="10" Foreground="#9AA1AE" Margin="0,3,0,0"/>
+                        </StackPanel>
+                        <Button Content="×" Width="32" Height="32" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Style="{StaticResource SecondaryButton}" Padding="0" FontSize="19"
+                                Click="CloseButton_Click"/>
+                    </Grid>
+                </Border>
+
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="24,18,24,14">
+                        <TextBlock Text="系统" FontSize="11" FontWeight="SemiBold" Foreground="#8A92A2" Margin="3,0,0,7"/>
+                        <Border Background="White" CornerRadius="16" BorderBrush="#E8EBF1" BorderThickness="1" Padding="17,8">
+                            <StackPanel>
+                                <CheckBox x:Name="AutoStartCheck" Content="开机自动启动" Style="{StaticResource ToggleSwitch}"/>
+                                <Border Height="1" Background="#EEF0F4"/>
+                                <CheckBox x:Name="AlwaysTopCheck" Content="悬浮窗始终置顶" Style="{StaticResource ToggleSwitch}"/>
+                                <Border Height="1" Background="#EEF0F4"/>
+                                <CheckBox x:Name="StartCompactCheck" Content="启动后直接显示悬浮按钮" Style="{StaticResource ToggleSwitch}"/>
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock Text="打开行为" FontSize="11" FontWeight="SemiBold" Foreground="#8A92A2" Margin="3,17,0,7"/>
+                        <Border Background="White" CornerRadius="16" BorderBrush="#E8EBF1" BorderThickness="1" Padding="17,8">
+                            <StackPanel>
+                                <CheckBox x:Name="AutoClipboardCheck" Content="复制有效路径后自动识别并打开" Style="{StaticResource ToggleSwitch}"/>
+                                <Border Height="1" Background="#EEF0F4"/>
+                                <CheckBox x:Name="AutoSameIpCheck" Content="路径已经是目标 IP 时也自动打开" Style="{StaticResource ToggleSwitch}"/>
+                                <Border Height="1" Background="#EEF0F4"/>
+                                <CheckBox x:Name="ClearAfterOpenCheck" Content="打开后自动清空输入内容" Style="{StaticResource ToggleSwitch}"/>
+                                <Border Height="1" Background="#EEF0F4"/>
+                                <CheckBox x:Name="MinimizeAfterOpenCheck" Content="打开后自动缩成悬浮按钮" Style="{StaticResource ToggleSwitch}"/>
+                                <Border Height="1" Background="#EEF0F4"/>
+                                <CheckBox x:Name="ConfirmLargeBatchCheck" Content="超过 20 个目录时先确认" Style="{StaticResource ToggleSwitch}"/>
+                            </StackPanel>
+                        </Border>
+                        <TextBlock Text="开启后无需 Ctrl+V：复制到符合要求的共享路径时会立即替换 IP 并打开。"
+                                   FontSize="10" Foreground="#7B8EAD" TextWrapping="Wrap" Margin="5,7,5,0"/>
+
+                        <Border Background="#F0F5FF" CornerRadius="16" Padding="17,14" Margin="0,18,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock Text="共享速览" FontSize="14" FontWeight="SemiBold" Foreground="#25324A"/>
+                                    <TextBlock Text="自动替换局域网 IP · 批量打开共享目录" FontSize="10" Foreground="#7C879A" Margin="0,4,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Ellipse Width="44" Height="44" Margin="0,0,9,0" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="Fant">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="Assets/老李Oldlee-头像-清晰版.png" Stretch="UniformToFill"/>
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <StackPanel>
+                                        <Button Background="Transparent" BorderThickness="0" Padding="2" Margin="0,1,0,0"
+                                                Cursor="Hand" Click="CopyrightLink_Click" ToolTip="打开 https://x.com/oldleeoo">
+                                            <TextBlock FontFamily="Segoe UI" FontSize="13" FontWeight="SemiBold" Foreground="#2563EB">
+                                                <Run Text="@老李Oldlee"/><Run Text="  ↗"/>
+                                            </TextBlock>
+                                        </Button>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Border Grid.Row="2" Background="White" CornerRadius="0,0,24,24" Padding="24,14">
+                    <Grid>
+                        <TextBlock x:Name="SaveHint" Text="设置保存在当前用户配置中" FontSize="11"
+                                   Foreground="#9299A8" VerticalAlignment="Center"/>
+                        <Button Content="保存设置" HorizontalAlignment="Right" Style="{StaticResource PrimaryButton}"
+                                Padding="24,10" Click="SaveButton_Click"/>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
