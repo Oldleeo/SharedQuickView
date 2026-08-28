@@ -69,7 +69,7 @@
 
 ### 1. 安装
 
-1. 从 [Releases](https://github.com/Oldleeo/SharedQuickView/releases/latest) 下载 `共享速览安装程序.exe`。
+1. 从 [Releases](https://github.com/Oldleeo/SharedQuickView/releases/latest) 下载名称以 `SharedQuickView-Setup-` 开头的 Windows x64 安装程序。
 2. 双击运行安装程序。
 3. 默认安装目录为 `C:\Program Files\共享速览`，也可以点击“浏览”选择其他目录。
 4. 按需要选择：

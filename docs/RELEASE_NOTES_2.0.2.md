@@ -15,7 +15,7 @@
 
 ## 下载说明
 
-下载 `共享速览安装程序.exe` 后运行即可。默认安装到 `C:\Program Files\共享速览`。
+下载 `SharedQuickView-Setup-v2.0.2-win-x64.exe` 后运行即可。默认安装到 `C:\Program Files\共享速览`。
 
 公开构建目前没有商业代码签名证书，Windows 可能显示未知发布者或 SmartScreen 提示。请确认下载地址属于 `github.com/Oldleeo/SharedQuickView`，并核对同一发布中的 SHA-256 文件；也可以自行构建源码。
 
