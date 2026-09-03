@@ -54,6 +54,8 @@ public partial class MainWindow : Window
 
     internal void EnterCompactModeForQa() => EnterCompactMode();
 
+    internal void ExitForQa() => ExitApplication();
+
     internal void PrepareDemoForQa(bool converted)
     {
         const string targetIp = "192.168.1.100";
@@ -196,12 +198,16 @@ public partial class MainWindow : Window
                 return;
             }
 
-            var detectedPaths = PathParser.ParseTransforms(text, targetIp)
-                .Where(item => _settings.AutoOpenSameTargetIp
-                               || !item.SourceHost.Equals(targetIp, StringComparison.OrdinalIgnoreCase))
-                .Select(item => item.ResultPath)
+            var detectedTargets = PathParser.ParseOpenTargets(
+                    text,
+                    targetIp,
+                    _settings.RecognizeWebUrls,
+                    _settings.RecognizeLocalPaths)
+                .Where(item => item.Kind != OpenTargetKind.SharedPath
+                               || _settings.AutoOpenSameTargetIp
+                               || !string.Equals(item.SourceHost, targetIp, StringComparison.OrdinalIgnoreCase))
                 .ToArray();
-            if (detectedPaths.Length == 0)
+            if (detectedTargets.Length == 0)
             {
                 return;
             }
@@ -211,11 +217,11 @@ public partial class MainWindow : Window
             {
                 _trayIcon.ShowBalloonTip(
                     1200,
-                    "检测到共享路径",
-                    $"正在自动打开 {detectedPaths.Length} 个目录",
+                    "检测到可打开内容",
+                    $"正在自动打开 {detectedTargets.Length} 项",
                     WinForms.ToolTipIcon.Info);
             }
-            ProcessAndOpen(text, detectedPaths);
+            ProcessAndOpen(text, detectedTargets);
         }
         catch (ExternalException)
         {
@@ -247,7 +253,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void ProcessAndOpen(string text, IReadOnlyList<string>? selectedPaths = null)
+    private void ProcessAndOpen(string text, IReadOnlyList<OpenTarget>? selectedTargets = null)
     {
         var targetIp = IpBox.Text.Trim();
         if (!PathParser.IsValidTargetIp(targetIp))
@@ -261,21 +267,25 @@ public partial class MainWindow : Window
             return;
         }
 
-        var paths = selectedPaths ?? PathParser.ParseAndReplace(text, targetIp);
-        if (paths.Count == 0)
+        var targets = selectedTargets ?? PathParser.ParseOpenTargets(
+            text,
+            targetIp,
+            _settings.RecognizeWebUrls,
+            _settings.RecognizeLocalPaths);
+        if (targets.Count == 0)
         {
-            SetStatus("没有识别到有效的共享路径", true, showDialogWhenCompact: true);
+            SetStatus("没有识别到可打开内容（网址/本地路径需在设置中开启）", true, showDialogWhenCompact: true);
             return;
         }
 
-        if (_settings.ConfirmLargeBatch && paths.Count > 20)
+        if (_settings.ConfirmLargeBatch && targets.Count > 20)
         {
             var answer = System.Windows.MessageBox.Show(
-                $"识别到 {paths.Count} 个目录，将打开很多资源管理器窗口。是否继续？",
+                $"识别到 {targets.Count} 项内容，将打开很多窗口。是否继续？",
                 "确认批量打开", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (answer != MessageBoxResult.Yes)
             {
-                SetStatus($"已取消打开 {paths.Count} 个目录", true);
+                SetStatus($"已取消打开 {targets.Count} 项", true);
                 return;
             }
         }
@@ -283,11 +293,11 @@ public partial class MainWindow : Window
         SaveIp(silent: true);
         var launched = 0;
         var launchErrors = new List<string>();
-        foreach (var path in paths)
+        foreach (var target in targets)
         {
             try
             {
-                PathLauncher.Open(path);
+                PathLauncher.Open(target);
                 launched++;
             }
             catch (Exception exception)
@@ -301,15 +311,15 @@ public partial class MainWindow : Window
             PathsBox.Clear();
         }
 
-        SetStatus(launched == paths.Count
-            ? $"已发送打开 {launched} 个目录 · {targetIp}"
-            : $"识别 {paths.Count} 个，成功发送 {launched} 个", launched != paths.Count);
+        SetStatus(launched == targets.Count
+            ? $"已发送打开 {launched} 项"
+            : $"识别 {targets.Count} 项，成功发送 {launched} 项", launched != targets.Count);
 
         if (launchErrors.Count > 0)
         {
             System.Windows.MessageBox.Show(
-                $"有 {launchErrors.Count} 个目录未能打开。\n\n{launchErrors[0]}",
-                "共享目录打开失败",
+                $"有 {launchErrors.Count} 项内容未能打开。\n\n{launchErrors[0]}",
+                "打开失败",
                 MessageBoxButton.OK,
                 MessageBoxImage.Warning);
         }
@@ -329,15 +339,19 @@ public partial class MainWindow : Window
             return;
         }
 
-        var paths = PathParser.ParseAndReplace(PathsBox.Text, targetIp);
-        if (paths.Count == 0)
+        var targets = PathParser.ParseOpenTargets(
+            PathsBox.Text,
+            targetIp,
+            _settings.RecognizeWebUrls,
+            _settings.RecognizeLocalPaths);
+        if (targets.Count == 0)
         {
-            SetStatus("没有识别到有效的共享路径", true);
+            SetStatus("没有识别到可预览内容", true);
             return;
         }
 
-        PathsBox.Text = string.Join(Environment.NewLine, paths);
-        SetStatus($"转换完成，共识别 {paths.Count} 个路径（尚未打开）", false);
+        PathsBox.Text = string.Join(Environment.NewLine, targets.Select(item => item.Value));
+        SetStatus($"预览完成，共识别 {targets.Count} 项（尚未打开）", false);
     }
 
     private void SaveIpButton_Click(object sender, RoutedEventArgs e) => SaveIp(silent: false);

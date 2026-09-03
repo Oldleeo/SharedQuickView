@@ -99,7 +99,7 @@ internal static class InstallServices
         var receipt = new
         {
             Product = AppName,
-            Version = "2.0.2",
+            Version = "2.1.0",
             Publisher = "@老李Oldlee",
             InstalledAt = DateTimeOffset.Now,
             PrivacyAndAgreementAccepted = true,
@@ -207,7 +207,7 @@ internal static class InstallServices
         using var baseKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
         using var key = baseKey.CreateSubKey(UninstallKeyPath, writable: true);
         key.SetValue("DisplayName", AppName);
-        key.SetValue("DisplayVersion", "2.0.2");
+        key.SetValue("DisplayVersion", "2.1.0");
         key.SetValue("Publisher", "老李Oldlee");
         key.SetValue("URLInfoAbout", "https://x.com/oldleeoo");
         key.SetValue("InstallLocation", installDirectory);

@@ -16,7 +16,7 @@
                             <Image Source="Assets/共享速览-ui-icon.png" Width="72" Height="72" HorizontalAlignment="Left"
                                    RenderOptions.BitmapScalingMode="HighQuality"/>
                             <TextBlock Text="共享速览" FontSize="21" FontWeight="SemiBold" Foreground="#17233A" Margin="0,12,0,0"/>
-                            <TextBlock Text="安装向导 · 2.0.2" FontSize="11" Foreground="#71809A" Margin="0,4,0,0"/>
+                            <TextBlock Text="安装向导 · 2.1.0" FontSize="11" Foreground="#71809A" Margin="0,4,0,0"/>
                         </StackPanel>
                         <StackPanel Grid.Row="1" Margin="0,34,0,0">
                             <TextBlock x:Name="Step1Label" Text="01  欢迎" FontSize="13" FontWeight="SemiBold" Foreground="#2563EB" Margin="0,7"/>

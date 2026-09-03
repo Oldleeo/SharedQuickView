@@ -32,7 +32,7 @@ public partial class App : System.Windows.Application
         var separator = argument.IndexOf('=');
         if (separator < 0)
         {
-            Shutdown(2);
+            _mainWindow.ExitForQa();
             return;
         }
 
@@ -55,7 +55,7 @@ public partial class App : System.Windows.Application
         else if (mode == "settings")
         {
             var settingsWindow = new SettingsWindow(_mainWindow, _mainWindow.SettingsData);
-            settingsWindow.Height = 820;
+            settingsWindow.Height = 900;
             settingsWindow.Show();
             await Task.Delay(350);
             QaCapture.Save(settingsWindow, outputPath);
@@ -66,6 +66,6 @@ public partial class App : System.Windows.Application
             QaCapture.Save(_mainWindow, outputPath);
         }
 
-        Shutdown();
+        _mainWindow.ExitForQa();
     }
 }

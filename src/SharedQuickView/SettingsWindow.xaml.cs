@@ -20,6 +20,8 @@ public partial class SettingsWindow : Window
         StartCompactCheck.IsChecked = settings.StartCompact;
         AutoClipboardCheck.IsChecked = settings.AutoOpenClipboard;
         AutoSameIpCheck.IsChecked = settings.AutoOpenSameTargetIp;
+        RecognizeWebUrlsCheck.IsChecked = settings.RecognizeWebUrls;
+        RecognizeLocalPathsCheck.IsChecked = settings.RecognizeLocalPaths;
         ClearAfterOpenCheck.IsChecked = settings.ClearAfterOpen;
         MinimizeAfterOpenCheck.IsChecked = settings.MinimizeAfterOpen;
         ConfirmLargeBatchCheck.IsChecked = settings.ConfirmLargeBatch;
@@ -48,6 +50,8 @@ public partial class SettingsWindow : Window
         _settings.StartCompact = StartCompactCheck.IsChecked == true;
         _settings.AutoOpenClipboard = AutoClipboardCheck.IsChecked == true;
         _settings.AutoOpenSameTargetIp = AutoSameIpCheck.IsChecked == true;
+        _settings.RecognizeWebUrls = RecognizeWebUrlsCheck.IsChecked == true;
+        _settings.RecognizeLocalPaths = RecognizeLocalPathsCheck.IsChecked == true;
         _settings.ClearAfterOpen = ClearAfterOpenCheck.IsChecked == true;
         _settings.MinimizeAfterOpen = MinimizeAfterOpenCheck.IsChecked == true;
         _settings.ConfirmLargeBatch = ConfirmLargeBatchCheck.IsChecked == true;

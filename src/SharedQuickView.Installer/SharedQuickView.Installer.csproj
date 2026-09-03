@@ -17,7 +17,7 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
-    <Version>2.0.2</Version>
+    <Version>2.1.0</Version>
     <Product>共享速览安装程序</Product>
     <Company>@老李Oldlee</Company>
     <Copyright>Copyright © @老李Oldlee 2026</Copyright>

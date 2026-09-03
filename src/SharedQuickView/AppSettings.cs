@@ -15,6 +15,8 @@ internal sealed class AppSettings
     public bool MinimizeAfterOpen { get; set; }
     public bool AutoOpenClipboard { get; set; }
     public bool AutoOpenSameTargetIp { get; set; }
+    public bool RecognizeWebUrls { get; set; }
+    public bool RecognizeLocalPaths { get; set; }
     public int Left { get; set; } = -1;
     public int Top { get; set; } = -1;
 }
