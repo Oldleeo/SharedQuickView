@@ -17,7 +17,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Oldleeo/SharedQuickView/releases/latest"><strong>下载最新版安装程序</strong></a>
+  <a href="https://oldleeo.github.io/SharedQuickView/"><strong>官方网站</strong></a>
+  ·
+  <a href="https://github.com/Oldleeo/SharedQuickView/releases/latest">下载最新版安装程序</a>
   ·
   <a href="#三分钟上手">三分钟上手</a>
   ·

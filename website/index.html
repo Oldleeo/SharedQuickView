@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7faff">
+  <meta name="description" content="共享速览是一款免费开源的 Windows 共享路径工具：自动替换服务器 IP、批量打开 UNC 目录，并可选识别网址和本地路径。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="共享速览 —— 共享路径，打开得更快">
+  <meta property="og:description" content="自动替换服务器 IP，批量打开完整目录。免费、开源、本地运行。">
+  <meta property="og:url" content="https://oldleeo.github.io/SharedQuickView/">
+  <meta property="og:image" content="https://oldleeo.github.io/SharedQuickView/assets/og-main.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="共享速览 —— 共享路径，打开得更快">
+  <meta name="twitter:description" content="自动替换服务器 IP，批量打开完整目录。免费、开源、本地运行。">
+  <meta name="twitter:image" content="https://oldleeo.github.io/SharedQuickView/assets/og-main.png">
+  <link rel="canonical" href="https://oldleeo.github.io/SharedQuickView/">
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>共享速览 —— 共享路径，打开得更快</title>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主内容</a>
+
+  <header class="site-header" id="top">
+    <div class="nav-wrap">
+      <a class="brand" href="#top" aria-label="共享速览首页">
+        <img src="assets/app-icon.png" alt="" width="38" height="38">
+        <span>共享速览</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#features">功能</a>
+        <a href="#guide">教程</a>
+        <a href="#screenshots">截图</a>
+        <a href="#privacy">隐私</a>
+      </nav>
+      <a class="button button-small" href="https://github.com/Oldleeo/SharedQuickView/releases/latest">下载 <span aria-hidden="true">↓</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span class="pulse-dot"></span> 共享速览 2.1.0 · Windows 10/11</div>
+        <h1>共享路径，<br><span>打开得更快。</span></h1>
+        <p class="hero-lead">一次设置目标 IP，以后粘贴任意 UNC 路径，自动替换服务器地址并直接进入最后一级文件夹。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://github.com/Oldleeo/SharedQuickView/releases/download/v2.1.0/SharedQuickView-Setup-v2.1.0-win-x64.exe">
+            <span class="windows-mark" aria-hidden="true">▦</span> 下载 Windows 安装版
+          </a>
+          <a class="button button-secondary" href="https://github.com/Oldleeo/SharedQuickView">查看开源代码 <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="download-note">64 位自包含安装包 · 免费无广告 · MIT 开源</p>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="共享速览主界面预览">
+        <div class="glow glow-one"></div>
+        <div class="glow glow-two"></div>
+        <div class="window-card">
+          <img src="assets/01-main.png" alt="共享速览主界面，包含目标服务器、共享路径输入和粘贴并打开按钮" width="640" height="610">
+        </div>
+        <div class="float-pill pill-top"><span>✓</span> 直达末级目录</div>
+        <div class="float-pill pill-bottom"><span>⇄</span> 自动替换 IP</div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="产品特性">
+      <div><strong>本地运行</strong><span>不上传路径</span></div>
+      <div><strong>无遥测</strong><span>不追踪使用数据</span></div>
+      <div><strong>免费开源</strong><span>MIT License</span></div>
+      <div><strong>批量处理</strong><span>一次打开多条</span></div>
+    </section>
+
+    <section class="section section-shell problem-section">
+      <div class="section-heading reveal">
+        <span class="kicker">问题解决了</span>
+        <h2>别再手动改 IP，也别再一层层找目录。</h2>
+        <p>同一份共享资料，可能因办公网络、服务器迁移或不同电脑而使用不同 IP。共享速览只替换服务器部分，后面的完整路径原样保留。</p>
+      </div>
+      <div class="path-compare reveal">
+        <div class="path-row">
+          <span class="path-label old">复制到的</span>
+          <code>\\<mark>192.168.1.20</mark>\共享资料\设计部\产品图\春季新品</code>
+        </div>
+        <div class="path-arrow" aria-hidden="true">↓</div>
+        <div class="path-row result">
+          <span class="path-label new">自动转换</span>
+          <code>\\<mark>192.168.1.100</mark>\共享资料\设计部\产品图\春季新品</code>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="demo">
+      <div class="section-shell demo-layout">
+        <div class="demo-copy reveal">
+          <span class="kicker">在网页里试一下</span>
+          <h2>路径替换演示</h2>
+          <p>下面的转换只在你的浏览器中完成，不会发送到服务器。可以一次放入多条路径。</p>
+          <ul class="check-list">
+            <li>仅替换 UNC 服务器地址</li>
+            <li>保留共享名和所有子目录</li>
+            <li>网址不会被当成共享路径</li>
+          </ul>
+        </div>
+        <div class="demo-card reveal">
+          <label for="target-ip">目标服务器</label>
+          <div class="ip-field"><span>IP</span><input id="target-ip" value="192.168.1.100" inputmode="decimal" autocomplete="off" spellcheck="false"></div>
+          <label for="source-paths">原始共享路径</label>
+          <textarea id="source-paths" rows="5" spellcheck="false">\\192.168.1.20\共享资料\设计部\产品图\春季新品
+\\192.168.1.20\共享资料\市场部\宣传素材</textarea>
+          <button class="button button-primary demo-button" id="transform-button" type="button">立即转换 <span aria-hidden="true">→</span></button>
+          <div class="demo-result" id="demo-result" aria-live="polite" hidden>
+            <div class="result-head"><span>转换结果</span><button type="button" id="copy-result">复制结果</button></div>
+            <pre id="result-paths"></pre>
+          </div>
+          <p class="demo-error" id="demo-error" role="alert" hidden></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="features">
+      <div class="section-heading centered reveal">
+        <span class="kicker">核心功能</span>
+        <h2>为日常办公里的“复制路径”而生。</h2>
+        <p>没有复杂配置，没有学习成本。把重复、琐碎、容易出错的一步交给工具。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card feature-large reveal">
+          <div class="feature-icon blue">⇄</div>
+          <h3>自动替换服务器 IP</h3>
+          <p>只改 UNC 路径开头的服务器地址，共享名、中间目录和最后一级文件夹全部保留。</p>
+          <div class="mini-code"><span>192.168.1.20</span><b>→</b><span>192.168.1.100</span></div>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon cyan">≡</div>
+          <h3>混合批量识别</h3>
+          <p>多条路径一次粘贴，自动识别数量、清理多余符号并去重。</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon violet">⌘</div>
+          <h3>剪贴板自动打开</h3>
+          <p>可选开启。复制到有效路径后立即转换并打开，无需再按 Ctrl + V。</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon green">↗</div>
+          <h3>网址与本地路径</h3>
+          <p>两个独立开关，默认均关闭。开启后原样打开，绝不替换 IP。</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon orange">▣</div>
+          <h3>直达最后一级目录</h3>
+          <p>完整路径指向哪个文件夹，Windows 资源管理器就进入哪个文件夹。</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon slate">●</div>
+          <h3>悬浮窗与系统托盘</h3>
+          <p>不用时收起，需要时一点即开。支持置顶、开机启动和启动后直接悬浮。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="guide">
+      <div class="section-shell">
+        <div class="section-heading centered reveal">
+          <span class="kicker">三步上手</span>
+          <h2>装好就会用。</h2>
+        </div>
+        <div class="steps">
+          <article class="step reveal">
+            <span class="step-number">01</span>
+            <h3>设置目标 IP</h3>
+            <p>填入你当前要访问的服务器 IPv4 地址，点击“保存”。</p>
+          </article>
+          <div class="step-line" aria-hidden="true"></div>
+          <article class="step reveal">
+            <span class="step-number">02</span>
+            <h3>复制共享路径</h3>
+            <p>从聊天、文档或表格复制一条或多条 UNC 路径。</p>
+          </article>
+          <div class="step-line" aria-hidden="true"></div>
+          <article class="step reveal">
+            <span class="step-number">03</span>
+            <h3>粘贴并打开</h3>
+            <p>按 Ctrl + V 或点击按钮，软件完成替换并打开完整目录。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell" id="screenshots">
+      <div class="section-heading reveal">
+        <span class="kicker">真实界面</span>
+        <h2>简洁，但每个细节都在。</h2>
+        <p>点击图片可查看大图。所有截图使用的都是虚构、脱敏演示数据。</p>
+      </div>
+      <div class="gallery">
+        <button class="shot shot-main reveal" type="button" data-image="assets/02-batch-input.png" data-alt="共享速览批量路径输入示例">
+          <img src="assets/02-batch-input.png" alt="共享速览批量路径输入示例" loading="lazy" width="640" height="610">
+          <span>批量路径识别</span>
+        </button>
+        <button class="shot shot-settings reveal" type="button" data-image="assets/04-settings.png" data-alt="共享速览完整设置界面">
+          <img src="assets/04-settings.png" alt="共享速览完整设置界面" loading="lazy" width="520" height="900">
+          <span>全部偏好设置</span>
+        </button>
+        <button class="shot reveal" type="button" data-image="assets/05-floating-window.png" data-alt="共享速览桌面悬浮窗">
+          <img src="assets/05-floating-window.png" alt="共享速览桌面悬浮窗" loading="lazy" width="250" height="92">
+          <span>轻巧桌面悬浮窗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section section-shell install-section">
+      <div class="install-card reveal">
+        <div class="install-copy">
+          <span class="kicker">正规安装与卸载</span>
+          <h2>安装到 Program Files，卸载也干干净净。</h2>
+          <p>安装时可选择桌面快捷方式、开始菜单和开机启动。阅读用户协议与隐私政策并同意后才可安装。</p>
+          <ul class="check-list">
+            <li>默认安装到 C:\Program Files\共享速览</li>
+            <li>登记到 Windows“已安装的应用”</li>
+            <li>卸载时自动关闭正在运行的软件</li>
+            <li>可选保留或删除个人设置</li>
+          </ul>
+        </div>
+        <div class="installer-stack">
+          <img class="installer-back" src="assets/07-installer-options.png" alt="共享速览安装位置与选项界面" loading="lazy" width="760" height="560">
+          <img class="installer-front" src="assets/06-installer-welcome.png" alt="共享速览安装欢迎页" loading="lazy" width="760" height="560">
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tinted" id="privacy">
+      <div class="section-shell privacy-layout">
+        <div class="privacy-seal reveal" aria-hidden="true">
+          <div class="seal-ring"><span>✓</span></div>
+          <p>LOCAL ONLY</p>
+        </div>
+        <div class="privacy-copy reveal">
+          <span class="kicker">隐私与安全</span>
+          <h2>你的 IP、路径和剪贴板，都留在你的电脑里。</h2>
+          <p>共享速览没有账号系统、广告、统计 SDK、遥测、崩溃上报或后台数据上传。它不扫描、不修改、不删除共享目录里的文件。</p>
+          <div class="privacy-links">
+            <a href="https://github.com/Oldleeo/SharedQuickView/blob/main/PRIVACY.md">阅读隐私说明 <span>↗</span></a>
+            <a href="https://github.com/Oldleeo/SharedQuickView/blob/main/SECURITY.md">查看安全政策 <span>↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-shell cta-section">
+      <div class="cta-card reveal">
+        <img src="assets/app-icon.png" alt="" width="72" height="72">
+        <div>
+          <h2>让下一条共享路径，一点就开。</h2>
+          <p>由老李Oldlee 制作并无偿开源。</p>
+        </div>
+        <a class="button button-primary" href="https://github.com/Oldleeo/SharedQuickView/releases/download/v2.1.0/SharedQuickView-Setup-v2.1.0-win-x64.exe">免费下载 2.1.0</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="section-shell footer-inner">
+      <div class="footer-author">
+        <img src="assets/avatar.png" alt="老李Oldlee 头像" width="38" height="38" loading="lazy">
+        <div><strong>共享速览</strong><span>© 2026 老李Oldlee</span></div>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/Oldleeo/SharedQuickView">GitHub</a>
+        <a href="https://github.com/Oldleeo/SharedQuickView/releases">下载</a>
+        <a href="https://x.com/oldleeoo">@oldleeoo</a>
+      </div>
+      <p class="footer-license">MIT License · 免费使用、修改和分发</p>
+    </div>
+  </footer>
+
+  <div class="mobile-download">
+    <a class="button button-primary" href="https://github.com/Oldleeo/SharedQuickView/releases/download/v2.1.0/SharedQuickView-Setup-v2.1.0-win-x64.exe">下载 Windows 安装版</a>
+  </div>
+
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox-close" type="button" aria-label="关闭大图">×</button>
+    <img id="lightbox-image" src="assets/01-main.png" alt="">
+  </dialog>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

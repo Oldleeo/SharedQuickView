@@ -1,0 +1,16 @@
+{
+  "name": "共享速览",
+  "short_name": "共享速览",
+  "description": "Windows 共享路径 IP 替换与批量打开工具",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f7faff",
+  "icons": [
+    {
+      "src": "assets/app-icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}
